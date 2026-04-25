@@ -383,4 +383,34 @@ export const BLOG_INTERLINKS: Record<string, PostInterlinks> = {
     ],
     next: { anchor: "10 questions to ask any SEO company in Sri Lanka before you sign", slug: "how-to-choose-seo-company-sri-lanka-questions", blurb: "Now turn the green flags into specific, direct questions for any agency." },
   },
+
+  // 18. SEO Services Sri Lanka — what's included
+  "seo-services-sri-lanka-what-is-included": {
+    related: [
+      { anchor: "On-page vs off-page SEO services in Sri Lanka", slug: "on-page-vs-off-page-seo-services-sri-lanka", blurb: "How the two disciplines work together — and why both matter." },
+      { anchor: "Monthly SEO services vs a one-time audit in Sri Lanka", slug: "monthly-seo-services-vs-one-time-audit-sri-lanka", blurb: "Which engagement model fits your business right now?" },
+      { anchor: "SEO service in Sri Lanka — plain-English breakdown", slug: "seo-service-sri-lanka-what-is-included", blurb: "A complementary plain-English view of every SEO service component." },
+    ],
+    next: { anchor: "On-page vs off-page SEO services in Sri Lanka", slug: "on-page-vs-off-page-seo-services-sri-lanka", blurb: "Now zoom into how on-page and off-page work together to drive rankings." },
+  },
+
+  // 19. On-page vs Off-page SEO services
+  "on-page-vs-off-page-seo-services-sri-lanka": {
+    related: [
+      { anchor: "What SEO services in Sri Lanka should include", slug: "seo-services-sri-lanka-what-is-included", blurb: "The complete component-by-component breakdown of professional SEO services." },
+      { anchor: "Monthly SEO services vs a one-time audit in Sri Lanka", slug: "monthly-seo-services-vs-one-time-audit-sri-lanka", blurb: "Decide whether you need ongoing services or a standalone audit." },
+      { anchor: "SEO packages in Sri Lanka", slug: "seo-packages-sri-lanka-guide", blurb: "Match the right balance of on-page and off-page work to a package." },
+    ],
+    next: { anchor: "Monthly SEO services vs a one-time audit in Sri Lanka", slug: "monthly-seo-services-vs-one-time-audit-sri-lanka", blurb: "Now decide which engagement model is the right next step for your business." },
+  },
+
+  // 20. Monthly SEO vs one-time audit
+  "monthly-seo-services-vs-one-time-audit-sri-lanka": {
+    related: [
+      { anchor: "What SEO services in Sri Lanka should include", slug: "seo-services-sri-lanka-what-is-included", blurb: "The full breakdown of what professional SEO services should cover." },
+      { anchor: "On-page vs off-page SEO services in Sri Lanka", slug: "on-page-vs-off-page-seo-services-sri-lanka", blurb: "How the two disciplines combine — and why both matter." },
+      { anchor: "SEO price in Sri Lanka — how much should you pay?", slug: "seo-price-sri-lanka-how-much-should-you-pay", blurb: "Honest pricing benchmarks for both audits and monthly services." },
+    ],
+    next: { anchor: "What SEO services in Sri Lanka should include", slug: "seo-services-sri-lanka-what-is-included", blurb: "Whichever option you choose — make sure these components are covered." },
+  },
 };
