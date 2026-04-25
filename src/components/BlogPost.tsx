@@ -5,7 +5,9 @@ import { Layout } from "@/components/Layout";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
+import { RelatedArticles } from "@/components/RelatedArticles";
 import { SITE } from "@/lib/site";
+import { BLOG_INTERLINKS } from "@/lib/blogInterlinks";
 
 export interface BlogFAQ {
   q: string;
@@ -169,6 +171,13 @@ export const BlogPost = ({
               ))}
             </div>
           </section>
+        )}
+
+        {BLOG_INTERLINKS[slug] && (
+          <RelatedArticles
+            related={BLOG_INTERLINKS[slug].related}
+            next={BLOG_INTERLINKS[slug].next}
+          />
         )}
 
         <div className="mt-12 rounded-3xl border border-accent/30 bg-accent/5 p-8 text-center">
