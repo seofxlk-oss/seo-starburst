@@ -42,15 +42,15 @@ export const GoogleSearchHero = () => {
           </div>
 
           <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] text-foreground sm:text-5xl md:text-6xl">
-            Rank #1 on <span className="text-gradient-google">Google</span> in Sri Lanka.
-            <br className="hidden sm:block" />
-            Generate qualified leads on autopilot.
+            <span className="text-gradient-google">SEO Company Sri Lanka</span> — Rank #1 on Google &amp; Grow Your Business
           </h1>
 
           <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-            SeoFX is the <strong className="font-semibold text-foreground">#1 SEO company in Sri Lanka</strong>.
-            We rank Sri Lankan businesses on Google's first page using 100% white-hat SEO — driving real
-            traffic, leads and sales.
+            SeoFX is a leading <strong className="font-semibold text-foreground">SEO company in Sri Lanka</strong> offering
+            professional <strong className="font-semibold text-foreground">SEO services</strong>, transparent
+            <strong className="font-semibold text-foreground"> SEO packages in Sri Lanka</strong>, and clear
+            <strong className="font-semibold text-foreground"> SEO pricing</strong> — using 100% white-hat SEO to drive
+            real traffic, leads and sales for Sri Lankan businesses.
           </p>
 
           {/* Google-style search bar */}
