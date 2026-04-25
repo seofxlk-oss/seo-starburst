@@ -511,10 +511,14 @@ const Home = () => {
                 <h3 className="font-display text-xl font-extrabold">{p.name}</h3>
                 <p className={`mt-1 text-xs ${p.featured ? "text-white/70" : "text-accent"}`}>{p.tagline}</p>
 
-                <div className="mt-4 flex items-baseline gap-1">
-                  <span className="font-display text-2xl font-extrabold sm:text-3xl">{p.price}</span>
-                  <span className={`text-xs ${p.featured ? "text-white/70" : "text-muted-foreground"}`}>{p.unit}</span>
-                </div>
+                {p.price ? (
+                  <div className="mt-4 flex items-baseline gap-1">
+                    <span className="font-display text-2xl font-extrabold sm:text-3xl">{p.price}</span>
+                    <span className={`text-xs ${p.featured ? "text-white/70" : "text-muted-foreground"}`}>{p.unit}</span>
+                  </div>
+                ) : (
+                  <div className="mt-4" />
+                )}
 
                 <p className={`mt-3 rounded-lg px-3 py-2 text-xs font-semibold ${p.featured ? "bg-white/10 text-white" : "bg-accent/10 text-accent"}`}>
                   🎯 {p.goal}
@@ -529,8 +533,19 @@ const Home = () => {
                   ))}
                 </ul>
 
-                <Button asChild variant={p.featured ? "hero" : "outline"} size="lg" className="mt-6 w-full">
-                  <Link to={p.href}>{p.cta} <ArrowRight className="size-4" /></Link>
+                <Button
+                  asChild
+                  variant={p.featured ? "hero" : p.external ? "whatsapp" : "outline"}
+                  size="lg"
+                  className="mt-6 w-full"
+                >
+                  {p.external ? (
+                    <a href={p.href} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="size-4" /> {p.cta}
+                    </a>
+                  ) : (
+                    <Link to={p.href}>{p.cta} <ArrowRight className="size-4" /></Link>
+                  )}
                 </Button>
               </article>
             ))}
