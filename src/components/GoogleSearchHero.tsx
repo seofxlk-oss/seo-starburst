@@ -33,7 +33,7 @@ export const GoogleSearchHero = () => {
             <span className="text-muted-foreground">Page 1 SEO Specialists · Sri Lanka</span>
           </div>
 
-          <h1 className="mt-6 font-display text-[2rem] xs:text-4xl font-extrabold leading-[1.1] text-foreground sm:text-5xl md:text-6xl">
+          <h1 className="mt-6 font-display text-[1.625rem] font-extrabold leading-[1.15] text-foreground xs:text-3xl sm:text-5xl md:text-6xl">
             <span className="text-gradient-accent">SEO Company Sri Lanka</span> — Rank #1 on Google &amp; Grow Your Business
           </h1>
 
