@@ -173,6 +173,13 @@ export const BlogPost = ({
           </section>
         )}
 
+        {BLOG_INTERLINKS[slug] && (
+          <RelatedArticles
+            related={BLOG_INTERLINKS[slug].related}
+            next={BLOG_INTERLINKS[slug].next}
+          />
+        )}
+
         <div className="mt-12 rounded-3xl border border-accent/30 bg-accent/5 p-8 text-center">
           <p className="text-lg font-medium text-foreground">{cta}</p>
           <Button asChild variant="hero" size="lg" className="mt-5">
