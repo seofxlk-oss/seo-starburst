@@ -334,24 +334,26 @@ const Home = () => {
       {/* SEO CONSULTATION SESSION — paid 1-on-1 booking */}
       <ConsultationSection variant="soft" />
 
-      {/* PRICING TEASER */}
-      <section className="bg-hero py-20 text-white sm:py-28">
+      {/* PRICING TEASER — light Google-vibe */}
+      <section className="bg-google-soft py-16 sm:py-24">
         <div className="container-tight">
           <div className="grid gap-12 lg:grid-cols-[1fr,1.1fr] lg:items-center">
             <div>
-              <span className="badge-pill-light">Transparent Pricing</span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-google-blue/20 bg-google-blue/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-google-blue">
+                Transparent Pricing
+              </span>
               <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
-                Affordable SEO Packages in Sri Lanka
+                Affordable <span className="text-gradient-google">SEO Packages</span> in Sri Lanka
               </h2>
-              <p className="mt-5 text-white/75">
+              <p className="mt-5 text-muted-foreground">
                 Looking for the best SEO packages in Sri Lanka at a fair price? SeoFX offers three clearly structured
                 SEO plans designed to suit businesses at every stage — Starter, Business, and Premium.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button asChild variant="hero" size="lg">
+                <Button asChild size="lg" className="bg-google-blue text-white hover:bg-google-blue/90">
                   <Link to="/seo-packages-sri-lanka">View SEO Packages <ArrowRight className="size-4" /></Link>
                 </Button>
-                <Button asChild variant="outlineLight" size="lg">
+                <Button asChild variant="outline" size="lg">
                   <a href={`tel:${SITE.phoneRaw}`}><Phone className="size-4" /> Call for Quote</a>
                 </Button>
               </div>
@@ -359,30 +361,29 @@ const Home = () => {
 
             <div className="grid gap-4 sm:grid-cols-3">
               {[
-                { name: "Starter", desc: "New to SEO", color: "from-white/5 to-white/0" },
-                { name: "Business", desc: "Growing businesses", color: "from-accent/20 to-accent/0", featured: true },
-                { name: "Premium", desc: "Rank #1 on Google", color: "from-white/5 to-white/0" },
+                { name: "Starter", desc: "New to SEO", accent: "text-google-blue", border: "border-border" },
+                { name: "Business", desc: "Growing businesses", accent: "text-google-red", border: "border-google-blue/40", featured: true },
+                { name: "Premium", desc: "Rank #1 on Google", accent: "text-google-green", border: "border-border" },
               ].map((p) => (
                 <div
                   key={p.name}
-                  className={`relative rounded-2xl border p-5 ${
-                    p.featured
-                      ? "border-accent/50 bg-gradient-to-b from-accent/15 to-transparent"
-                      : "border-white/10 bg-white/5"
-                  }`}
+                  className={`relative rounded-2xl border bg-card p-5 shadow-card transition-all hover:shadow-google ${p.border} ${p.featured ? "lg:-translate-y-2" : ""}`}
                 >
                   {p.featured && (
-                    <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-accent px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-foreground">
-                      Popular
-                    </span>
+                    <>
+                      <div className="absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-gradient-google" aria-hidden />
+                      <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-gradient-google px-3 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
+                        Popular
+                      </span>
+                    </>
                   )}
-                  <h3 className="font-display text-xl font-bold">{p.name}</h3>
-                  <p className="mt-1 text-sm text-white/60">{p.desc}</p>
-                  <ul className="mt-4 space-y-2 text-sm text-white/80">
-                    <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-accent" /> SEO consultation</li>
-                    <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-accent" /> Keyword research</li>
-                    <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-accent" /> Backlink building</li>
-                    <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-accent" /> Monthly reports</li>
+                  <h3 className={`font-display text-xl font-bold ${p.accent}`}>{p.name}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
+                  <ul className="mt-4 space-y-2 text-sm text-foreground">
+                    <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-google-green" /> SEO consultation</li>
+                    <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-google-green" /> Keyword research</li>
+                    <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-google-green" /> Backlink building</li>
+                    <li className="flex gap-2"><CheckCircle2 className="size-4 shrink-0 text-google-green" /> Monthly reports</li>
                   </ul>
                 </div>
               ))}
