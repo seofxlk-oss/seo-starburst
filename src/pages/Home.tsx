@@ -289,16 +289,20 @@ const Home = () => {
                 }`}
               >
                 {a.badge && (
-                  <span className="absolute -top-3 left-6 rounded-full bg-gradient-accent px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-accent-foreground">
+                  <span className="absolute -top-3 left-6 rounded-full bg-gradient-accent px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-accent-foreground shadow-glow">
                     {a.badge}
                   </span>
                 )}
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <a.icon className="size-6" />
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-accent text-accent-foreground shadow-glow">
+                  <a.icon className="size-7" />
                 </div>
                 <h3 className="mt-5 font-display text-2xl font-extrabold">{a.title}</h3>
                 <p className="mt-1 text-sm font-semibold text-accent">{a.tagline}</p>
-                <ul className="mt-5 space-y-2.5 text-sm">
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a.desc}</p>
+
+                <div className="my-5 h-px bg-border" />
+
+                <ul className="space-y-2.5 text-sm">
                   {a.points.map((p) => (
                     <li key={p} className="flex gap-2">
                       <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-accent" />
@@ -306,8 +310,20 @@ const Home = () => {
                     </li>
                   ))}
                 </ul>
-                <Button asChild variant="outline" size="lg" className="mt-7 w-full">
-                  <Link to={a.href}>{a.cta} <ArrowRight className="size-4" /></Link>
+
+                <Button
+                  asChild
+                  variant={a.badge ? "hero" : "whatsapp"}
+                  size="lg"
+                  className="mt-7 w-full"
+                >
+                  {a.external ? (
+                    <a href={a.href} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="size-4" /> {a.cta}
+                    </a>
+                  ) : (
+                    <Link to={a.href}>{a.cta} <ArrowRight className="size-4" /></Link>
+                  )}
                 </Button>
               </article>
             ))}
