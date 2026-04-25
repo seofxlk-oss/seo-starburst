@@ -126,29 +126,29 @@ export const BLOG_INTERLINKS: Record<string, PostInterlinks> = {
     },
   },
 
-  // 5. seo sri lanka
+  // 5. seo sri lanka — complete guide (2026)
   "seo-sri-lanka-complete-guide-2025": {
     related: [
+      {
+        anchor: "How Google search has changed in Sri Lanka in 2026",
+        slug: "seo-sri-lanka-2026-how-google-has-changed",
+        blurb: "The 6 biggest shifts in Google's algorithm and what they mean locally.",
+      },
+      {
+        anchor: "Is SEO worth it for Sri Lankan businesses?",
+        slug: "is-seo-worth-it-sri-lanka",
+        blurb: "Honest reasoning on when SEO pays off — and when it doesn't.",
+      },
       {
         anchor: "SEO service in Sri Lanka — what it includes",
         slug: "seo-service-sri-lanka-what-is-included",
         blurb: "Plain-English breakdown of every component of a real SEO campaign.",
       },
-      {
-        anchor: "SEO packages in Sri Lanka",
-        slug: "seo-packages-sri-lanka-guide",
-        blurb: "The right package tier for your business and budget.",
-      },
-      {
-        anchor: "SEO price in Sri Lanka — how much should you pay?",
-        slug: "seo-price-sri-lanka-how-much-should-you-pay",
-        blurb: "Honest pricing benchmarks across starter, business and premium SEO.",
-      },
     ],
     next: {
-      anchor: "What does an SEO service in Sri Lanka actually include?",
-      slug: "seo-service-sri-lanka-what-is-included",
-      blurb: "Now that you know SEO works — see exactly what an SEO campaign delivers.",
+      anchor: "How Google search has changed in Sri Lanka in 2026",
+      slug: "seo-sri-lanka-2026-how-google-has-changed",
+      blurb: "Now you know the fundamentals — see exactly what's changed in 2026.",
     },
   },
 
@@ -332,5 +332,25 @@ export const BLOG_INTERLINKS: Record<string, PostInterlinks> = {
       slug: "what-does-seo-specialist-sri-lanka-do",
       blurb: "Refresh on the full role, skills and outputs of a real specialist.",
     },
+  },
+
+  // 13. SEO Sri Lanka 2026 — Google changes
+  "seo-sri-lanka-2026-how-google-has-changed": {
+    related: [
+      { anchor: "Complete guide to SEO in Sri Lanka (2026)", slug: "seo-sri-lanka-complete-guide-2025", blurb: "The full 2026 SEO playbook for Sri Lankan businesses." },
+      { anchor: "Is SEO worth it for Sri Lankan businesses?", slug: "is-seo-worth-it-sri-lanka", blurb: "Honest reasoning on when SEO pays off." },
+      { anchor: "SEO service in Sri Lanka — what's included", slug: "seo-service-sri-lanka-what-is-included", blurb: "Make sure your SEO covers the new 2026 essentials." },
+    ],
+    next: { anchor: "Is SEO worth it for Sri Lankan businesses?", slug: "is-seo-worth-it-sri-lanka", blurb: "Now decide whether SEO is the right investment for your business." },
+  },
+
+  // 14. Is SEO worth it
+  "is-seo-worth-it-sri-lanka": {
+    related: [
+      { anchor: "Complete guide to SEO in Sri Lanka (2026)", slug: "seo-sri-lanka-complete-guide-2025", blurb: "The definitive playbook for SEO in Sri Lanka." },
+      { anchor: "How Google search has changed in Sri Lanka in 2026", slug: "seo-sri-lanka-2026-how-google-has-changed", blurb: "What's shifted and what your business must do now." },
+      { anchor: "SEO price in Sri Lanka — how much should you pay?", slug: "seo-price-sri-lanka-how-much-should-you-pay", blurb: "Honest pricing benchmarks before you commit budget." },
+    ],
+    next: { anchor: "Complete guide to SEO in Sri Lanka (2026)", slug: "seo-sri-lanka-complete-guide-2025", blurb: "Decided SEO is worth it? Here's the complete 2026 playbook." },
   },
 };
