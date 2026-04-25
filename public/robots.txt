@@ -1,7 +1,48 @@
+# robots.txt for SeoFX — https://seofx.lk
+# Best SEO Company in Sri Lanka
+
+# ============================================================
+# Default rules — applies to all crawlers (Googlebot, Bingbot, etc.)
+# ============================================================
 User-agent: *
 Allow: /
 
+# Allow all important pages explicitly
+Allow: /seo-specialist-sri-lanka
+Allow: /services
+Allow: /services/
+Allow: /seo-packages-sri-lanka
+Allow: /case-studies
+Allow: /case-studies/
+Allow: /blog
+Allow: /blog/
+Allow: /faq
+Allow: /contact-us
+
+# Allow static assets (CSS, JS, images, fonts) — required for proper rendering
+Allow: /assets/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.ico$
+Allow: /*.woff$
+Allow: /*.woff2$
+
+# Block junk paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*?*utm_
+Disallow: /*?*fbclid
+Disallow: /*?*gclid
+
+# ============================================================
 # AI search & assistant crawlers — explicitly allowed
+# ============================================================
 User-agent: GPTBot
 Allow: /
 
@@ -53,4 +94,22 @@ Allow: /
 User-agent: DuckAssistBot
 Allow: /
 
+# ============================================================
+# Block known bad / aggressive scrapers
+# ============================================================
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# ============================================================
+# Sitemap
+# ============================================================
 Sitemap: https://seofx.lk/sitemap.xml
