@@ -82,7 +82,7 @@ export const BlogPost = ({
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: `${SITE.url}/` },
       { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/blog` },
-      { "@type": "ListItem", position: 3, name: title, item: url },
+      { "@type": "ListItem", position: 3, name: category, item: url },
     ],
   };
 
@@ -96,7 +96,7 @@ export const BlogPost = ({
         ogImage={image}
         jsonLd={[articleJsonLd, breadcrumbJsonLd]}
       />
-      <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: title }]} />
+      <Breadcrumbs items={[{ label: "Blog", href: "/blog" }, { label: category }]} />
 
       <article className="container-narrow py-12 sm:py-16">
         <span className="badge-pill">{category}</span>
