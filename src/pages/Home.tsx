@@ -8,6 +8,7 @@ import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/CTASection";
 import { AIAnswerBlock } from "@/components/AIAnswerBlock";
+import { ConsultationSection } from "@/components/ConsultationSection";
 import { GoogleSearchHero } from "@/components/GoogleSearchHero";
 import { SITE } from "@/lib/site";
 import caseImg from "@/assets/case-porkendeli.jpg";
@@ -298,6 +299,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* SEO CONSULTATION SESSION — paid 1-on-1 booking */}
+      <ConsultationSection variant="soft" />
 
       {/* PRICING TEASER */}
       <section className="bg-hero py-20 text-white sm:py-28">
