@@ -1,4 +1,4 @@
-import { Phone, MessageCircle, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Phone, MessageCircle, MapPin, Clock, ArrowRight } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Layout } from "@/components/Layout";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
