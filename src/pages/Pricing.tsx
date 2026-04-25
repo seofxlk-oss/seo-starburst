@@ -101,23 +101,24 @@ const Pricing = () => {
   return (
     <Layout>
       <SEO
-        title="SEO Packages Sri Lanka | SEO Price Sri Lanka | SeoFX"
-        description="View SeoFX SEO packages in Sri Lanka with clear, transparent pricing. Starter, Business & Premium SEO plans designed for Sri Lankan businesses. Get a free quote today."
+        title="SEO Packages in Sri Lanka | SEO Price in Sri Lanka | SeoFX"
+        description="SEO packages in Sri Lanka with transparent SEO price in Sri Lanka. Starter, Business & Premium SEO plans by SeoFX — Sri Lanka's leading SEO company. Free quote."
         canonical="/seo-packages-sri-lanka"
-        keywords="SEO packages in Sri Lanka, SEO price in Sri Lanka, seo service price sri lanka, seo cost sri lanka, affordable seo sri lanka"
+        keywords="seo packages in sri lanka, seo price in sri lanka, seo packages sri lanka, seo cost sri lanka, affordable seo sri lanka, seo company sri lanka"
         jsonLd={faqJsonLd}
       />
       <Breadcrumbs items={[{ label: "SEO Packages" }]} />
 
       <section className="container-tight py-16 sm:py-20">
         <div className="mx-auto max-w-4xl text-center">
-          <span className="badge-pill">SEO Pricing</span>
+          <span className="badge-pill">SEO Packages & Price</span>
           <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
-            <span className="text-gradient-accent">SEO Packages</span> in Sri Lanka — Transparent, Affordable Pricing
+            <span className="text-gradient-accent">SEO Packages in Sri Lanka</span> &amp; Transparent <span className="text-gradient-accent">SEO Price in Sri Lanka</span>
           </h1>
           <p className="mt-5 text-lg text-muted-foreground">
-            Looking for the best SEO packages in Sri Lanka at a fair price? SeoFX offers three clearly structured SEO
-            plans designed to suit businesses at every stage — from startups to established enterprises.
+            Compare <strong className="text-foreground">SEO packages in Sri Lanka</strong> from SeoFX — Starter,
+            Business and Premium — with clear, honest <strong className="text-foreground">SEO price in Sri Lanka</strong>
+            built for startups, growing brands and competitive industries.
           </p>
         </div>
       </section>

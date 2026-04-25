@@ -31,10 +31,10 @@ const Services = () => {
   return (
     <Layout>
       <SEO
-        title="SEO Services in Sri Lanka | SEO Company Sri Lanka | SeoFX"
-        description="SeoFX offers full-spectrum SEO services in Sri Lanka — keyword research, on-page SEO, link building, web development & digital marketing. Free SEO audit."
+        title="SEO Services Sri Lanka | SEO Service Sri Lanka | SeoFX"
+        description="SEO services Sri Lanka by SeoFX — full SEO service in Sri Lanka covering audit, keyword research, on-page, link building & local SEO. Free SEO audit."
         canonical="/services"
-        keywords="seo service sri lanka, seo companies sri lanka, seo company sri lanka, seo consulting sri lanka, link building sri lanka"
+        keywords="seo services sri lanka, seo service sri lanka, seo companies sri lanka, seo company sri lanka, best seo company sri lanka, seo sri lanka"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Service",
@@ -60,13 +60,14 @@ const Services = () => {
 
       <section className="container-tight py-16 sm:py-20">
         <div className="mx-auto max-w-4xl text-center">
-          <span className="badge-pill">SEO Services</span>
+          <span className="badge-pill">SEO Services Sri Lanka</span>
           <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
-            Complete <span className="text-gradient-accent">SEO Services</span> in Sri Lanka — Everything You Need to Rank #1
+            <span className="text-gradient-accent">SEO Services in Sri Lanka</span> — Full SEO Service from Sri Lanka's Leading SEO Company
           </h1>
           <p className="mt-5 text-lg text-muted-foreground">
-            As one of the most comprehensive SEO companies in Sri Lanka, SeoFX offers end-to-end SEO services
-            designed to increase your organic traffic, generate quality leads, and grow your business revenue.
+            SeoFX offers complete <strong className="text-foreground">SEO services in Sri Lanka</strong> — every
+            <strong className="text-foreground"> SEO service</strong> a Sri Lankan business needs to rank #1 on Google,
+            generate quality leads and grow revenue, all under one trusted <strong className="text-foreground">SEO company in Sri Lanka</strong>.
           </p>
         </div>
       </section>

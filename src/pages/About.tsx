@@ -10,10 +10,10 @@ const About = () => {
   return (
     <Layout>
       <SEO
-        title="About SeoFX — Best SEO Company in Sri Lanka | SEO Specialists"
-        description="Meet SeoFX, the best SEO company in Sri Lanka. Our specialist SEO consultants help Sri Lankan businesses rank higher, get more traffic & generate more leads."
+        title="Best SEO Company in Sri Lanka | SEO Specialist Sri Lanka | SeoFX"
+        description="Best SEO company in Sri Lanka — SeoFX's SEO specialists in Sri Lanka help businesses rank #1 on Google with white-hat SEO services and proven results."
         canonical="/seo-specialist-sri-lanka"
-        keywords="best seo company in sri lanka, seo specialist sri lanka, seo consultant sri lanka, seo company sri lanka"
+        keywords="best seo company in sri lanka, best seo company sri lanka, seo specialist sri lanka, seo consultant sri lanka, seo company sri lanka, seo sri lanka"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
@@ -27,12 +27,11 @@ const About = () => {
         <div className="mx-auto max-w-4xl text-center">
           <span className="badge-pill">About SeoFX</span>
           <h1 className="mt-4 font-display text-4xl font-extrabold leading-tight sm:text-5xl md:text-6xl">
-            Sri Lanka's Most Trusted{" "}
-            <span className="text-gradient-accent">SEO Specialists</span>
+            <span className="text-gradient-accent">Best SEO Company in Sri Lanka</span> — Trusted SEO Specialists
           </h1>
           <p className="mt-5 text-lg text-muted-foreground">
-            SeoFX is one of the leading SEO companies in Sri Lanka, driven by a passion for building brands and
-            delivering results that truly matter.
+            SeoFX is a leading <strong className="text-foreground">SEO company in Sri Lanka</strong>, driven by a passion
+            for building brands and delivering measurable SEO results for businesses across the island.
           </p>
         </div>
       </section>
