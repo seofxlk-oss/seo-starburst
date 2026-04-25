@@ -129,39 +129,48 @@ const Home = () => {
     {
       icon: Briefcase,
       title: "Businesses",
-      tagline: "Generate leads on autopilot",
+      tagline: "More leads. More sales. Less ad spend.",
+      desc: "For Sri Lankan businesses ready to turn their website into a 24/7 lead generation machine.",
       points: [
-        "Rank #1 for buyer-intent keywords",
-        "Stop bleeding money on Google Ads",
-        "Predictable monthly leads from organic search",
+        "Rank #1 for buyer-intent keywords on Google.lk",
+        "Cut Google Ads cost by 60%+ with organic traffic",
+        "Predictable monthly leads — without paid ads",
+        "90-Day Ranking Promise on every campaign",
       ],
-      cta: "Get Free Audit",
-      href: "/contact-us#audit",
-      badge: "Most Popular",
+      cta: "WhatsApp Us",
+      href: wa,
+      external: true,
+      badge: "Most Requested",
     },
     {
       icon: Megaphone,
       title: "Ad Agencies",
-      tagline: "Add SEO without hiring a team",
+      tagline: "Add SEO. Keep your client. Grow margins.",
+      desc: "For marketing & ad agencies in Sri Lanka that want to offer SEO without hiring an SEO team.",
       points: [
-        "100% white-label SEO delivery",
-        "Your branding on every report",
-        "Revenue share — keep your client",
+        "100% white-label SEO delivery (we stay invisible)",
+        "Reports & dashboards branded as yours",
+        "Generous revenue share on every retainer",
+        "Dedicated account manager for all your clients",
       ],
-      cta: "Partner With Us",
-      href: "/contact-us#partner",
+      cta: "WhatsApp Partnership Team",
+      href: waPartner,
+      external: true,
     },
     {
       icon: Code2,
       title: "Web Dev Companies",
-      tagline: "Sell SEO to every web client",
+      tagline: "Sell SEO with every website you ship.",
+      desc: "For web studios & developers wanting to add a profitable SEO line to every project.",
       points: [
-        "Bundle SEO with every website you ship",
-        "We handle audit, on-page, links & reports",
-        "Zero overhead, full margin",
+        "Bundle SEO with every website you build",
+        "We handle audit, on-page, links & monthly reports",
+        "Zero in-house overhead — full margin to you",
+        "Recurring revenue from one-time clients",
       ],
-      cta: "Become a Partner",
-      href: "/contact-us#partner",
+      cta: "WhatsApp Us",
+      href: waPartner,
+      external: true,
     },
   ];
 
@@ -194,37 +203,35 @@ const Home = () => {
       features: ["60-min 1-on-1 with senior SEO", "Keyword & competitor report", "Written SEO roadmap", "Budget & agency advice"],
       cta: "Book Session",
       href: "/contact-us",
+      external: false,
     },
     {
       name: "Starter",
-      price: "LKR 29,900",
-      unit: "/ month",
       tagline: "Small business & startups",
       goal: "Establish your Google presence",
       features: ["SEO audit & strategy", "Keyword research", "On-page optimisation", "Backlink building", "Monthly report"],
-      cta: "Get Free Audit",
-      href: "/contact-us#audit",
+      cta: "WhatsApp Us",
+      href: wa,
+      external: true,
     },
     {
       name: "Business",
-      price: "LKR 59,900",
-      unit: "/ month",
       tagline: "Growing businesses",
       goal: "Generate consistent monthly leads",
       featured: true,
       features: ["Everything in Starter", "Advanced competitor analysis", "Technical SEO", "Stronger link building", "Detailed reporting"],
-      cta: "Get Free Audit",
-      href: "/contact-us#audit",
+      cta: "WhatsApp Us",
+      href: wa,
+      external: true,
     },
     {
       name: "Premium",
-      price: "LKR 99,900+",
-      unit: "/ month",
       tagline: "Dominate competitive industries",
       goal: "Outrank every competitor & own page 1",
       features: ["Everything in Business", "High-priority keywords", "Multi-page optimisation", "Aggressive link building", "Strategy reviews"],
-      cta: "Get Free Audit",
-      href: "/contact-us#audit",
+      cta: "WhatsApp Us",
+      href: wa,
+      external: true,
     },
   ];
 
@@ -282,16 +289,20 @@ const Home = () => {
                 }`}
               >
                 {a.badge && (
-                  <span className="absolute -top-3 left-6 rounded-full bg-gradient-accent px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-accent-foreground">
+                  <span className="absolute -top-3 left-6 rounded-full bg-gradient-accent px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-accent-foreground shadow-glow">
                     {a.badge}
                   </span>
                 )}
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <a.icon className="size-6" />
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-accent text-accent-foreground shadow-glow">
+                  <a.icon className="size-7" />
                 </div>
                 <h3 className="mt-5 font-display text-2xl font-extrabold">{a.title}</h3>
                 <p className="mt-1 text-sm font-semibold text-accent">{a.tagline}</p>
-                <ul className="mt-5 space-y-2.5 text-sm">
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{a.desc}</p>
+
+                <div className="my-5 h-px bg-border" />
+
+                <ul className="space-y-2.5 text-sm">
                   {a.points.map((p) => (
                     <li key={p} className="flex gap-2">
                       <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-accent" />
@@ -299,8 +310,20 @@ const Home = () => {
                     </li>
                   ))}
                 </ul>
-                <Button asChild variant="outline" size="lg" className="mt-7 w-full">
-                  <Link to={a.href}>{a.cta} <ArrowRight className="size-4" /></Link>
+
+                <Button
+                  asChild
+                  variant={a.badge ? "hero" : "whatsapp"}
+                  size="lg"
+                  className="mt-7 w-full"
+                >
+                  {a.external ? (
+                    <a href={a.href} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="size-4" /> {a.cta}
+                    </a>
+                  ) : (
+                    <Link to={a.href}>{a.cta} <ArrowRight className="size-4" /></Link>
+                  )}
                 </Button>
               </article>
             ))}
@@ -488,10 +511,14 @@ const Home = () => {
                 <h3 className="font-display text-xl font-extrabold">{p.name}</h3>
                 <p className={`mt-1 text-xs ${p.featured ? "text-white/70" : "text-accent"}`}>{p.tagline}</p>
 
-                <div className="mt-4 flex items-baseline gap-1">
-                  <span className="font-display text-2xl font-extrabold sm:text-3xl">{p.price}</span>
-                  <span className={`text-xs ${p.featured ? "text-white/70" : "text-muted-foreground"}`}>{p.unit}</span>
-                </div>
+                {p.price ? (
+                  <div className="mt-4 flex items-baseline gap-1">
+                    <span className="font-display text-2xl font-extrabold sm:text-3xl">{p.price}</span>
+                    <span className={`text-xs ${p.featured ? "text-white/70" : "text-muted-foreground"}`}>{p.unit}</span>
+                  </div>
+                ) : (
+                  <div className="mt-4" />
+                )}
 
                 <p className={`mt-3 rounded-lg px-3 py-2 text-xs font-semibold ${p.featured ? "bg-white/10 text-white" : "bg-accent/10 text-accent"}`}>
                   🎯 {p.goal}
@@ -506,8 +533,19 @@ const Home = () => {
                   ))}
                 </ul>
 
-                <Button asChild variant={p.featured ? "hero" : "outline"} size="lg" className="mt-6 w-full">
-                  <Link to={p.href}>{p.cta} <ArrowRight className="size-4" /></Link>
+                <Button
+                  asChild
+                  variant={p.featured ? "hero" : p.external ? "whatsapp" : "outline"}
+                  size="lg"
+                  className="mt-6 w-full"
+                >
+                  {p.external ? (
+                    <a href={p.href} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="size-4" /> {p.cta}
+                    </a>
+                  ) : (
+                    <Link to={p.href}>{p.cta} <ArrowRight className="size-4" /></Link>
+                  )}
                 </Button>
               </article>
             ))}
