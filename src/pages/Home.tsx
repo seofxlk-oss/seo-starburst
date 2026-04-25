@@ -167,8 +167,8 @@ const Home = () => {
   return (
     <Layout>
       <SEO
-        title="SEO Company Sri Lanka | Best SEO Services & Packages | SeoFX"
-        description="SeoFX is the best SEO company in Sri Lanka. SEO services, SEO packages & transparent SEO price in Sri Lanka. Free SEO audit. Call +94 777 797 035."
+        title="SEO Company Sri Lanka | SEO Services Sri Lanka | SEO Packages Sri Lanka"
+        description="SEO company Sri Lanka providing SEO services Sri Lanka, SEO packages in Sri Lanka, SEO price in Sri Lanka, and best SEO company in Sri Lanka for higher rankings and leads."
         canonical="/"
         keywords="seo company sri lanka, seo companies in sri lanka, best seo company sri lanka, seo companies sri lanka, seo sri lanka, seo service sri lanka, best seo company in sri lanka, seo packages in sri lanka, seo price in sri lanka"
         jsonLd={jsonLd}
