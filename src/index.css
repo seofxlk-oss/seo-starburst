@@ -139,8 +139,8 @@
 }
 
 @layer components {
-  .container-tight { @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8; }
-  .container-narrow { @apply mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-8; }
+  .container-tight { @apply mx-auto w-full max-w-6xl px-3 sm:px-6 lg:px-8; }
+  .container-narrow { @apply mx-auto w-full max-w-4xl px-3 sm:px-6 lg:px-8; }
 
   .text-gradient-accent {
     background: var(--gradient-accent);
