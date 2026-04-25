@@ -46,6 +46,7 @@ export const BlogPost = ({
   author = "SeoFX Team",
   image = `${SITE.url}/og-image.jpg`,
   cta,
+  faqs,
   children,
 }: BlogPostProps) => {
   const url = `${SITE.url}/blog/${slug}`;
