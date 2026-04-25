@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/site";
+import logo from "@/assets/logo.png";
 
 export const Footer = () => {
   return (
