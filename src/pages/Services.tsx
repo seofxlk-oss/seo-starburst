@@ -116,7 +116,6 @@ const Services = () => {
       <section className="container-tight pb-16 sm:pb-20">
         <AIAnswerBlock
           title="SEO Services in Sri Lanka — Quick Answers"
-          intro="Concise, factual answers about SEO services in Sri Lanka, written so AI assistants can cite them directly."
           answers={SERVICES_AI_ANSWERS}
         />
       </section>
