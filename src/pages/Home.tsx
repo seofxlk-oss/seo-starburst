@@ -177,6 +177,21 @@ const Home = () => {
       href: wa,
       external: true,
     },
+    {
+      name: "Google Map Optimization",
+      tagline: "Local businesses & service areas",
+      goal: "Rank in the Google Maps 3-Pack",
+      features: [
+        "Google Business Profile setup & optimisation",
+        "Local keyword & geo targeting",
+        "Citations & NAP consistency",
+        "Review generation strategy",
+        "Monthly local ranking report",
+      ],
+      cta: "Explore Map SEO",
+      href: "/google-map-optimization",
+      external: false,
+    },
   ];
 
   // ───────── Section 8 — Testimonials ─────────
