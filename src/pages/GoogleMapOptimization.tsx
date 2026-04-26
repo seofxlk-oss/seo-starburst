@@ -25,6 +25,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/site";
 import { orgSchema, websiteSchema, serviceSchema, faqSchema } from "@/lib/schema";
+import googleMapVideo from "@/assets/google-map-hero.mp4.asset.json";
 
 const REALITY = [
   {
@@ -273,54 +274,141 @@ const GoogleMapOptimization = () => {
 
       {/* HERO */}
       <section className="relative overflow-hidden bg-hero py-20 sm:py-28">
+        {/* Background video */}
+        <video
+          src={googleMapVideo.url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden
+          className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30"
+        />
+        {/* Dark overlay for text legibility */}
         <div
-          className="pointer-events-none absolute -top-40 -right-40 h-[700px] w-[700px] rounded-full bg-primary/20 blur-3xl"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-hero via-hero/85 to-hero/40"
+          aria-hidden
+        />
+        {/* Google-colored ambient glows */}
+        <div
+          className="pointer-events-none absolute -top-40 -right-40 h-[700px] w-[700px] rounded-full bg-google-blue/25 blur-3xl"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute -bottom-32 left-10 h-[400px] w-[400px] rounded-full bg-accent/15 blur-3xl"
+          className="pointer-events-none absolute -bottom-32 left-10 h-[400px] w-[400px] rounded-full bg-google-red/15 blur-3xl"
           aria-hidden
         />
+        {/* Google brand accent strip */}
+        <div className="pointer-events-none absolute top-0 left-0 h-[3px] w-full" aria-hidden>
+          <div className="flex h-full w-full">
+            <div className="h-full flex-1 bg-google-blue" />
+            <div className="h-full flex-1 bg-google-red" />
+            <div className="h-full flex-1 bg-google-yellow" />
+            <div className="h-full flex-1 bg-google-green" />
+          </div>
+        </div>
 
-        <div className="container-tight relative">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/60">
-            <span className="size-1.5 rounded-full bg-accent" />
-            Google Map Optimization · Sri Lanka
-          </span>
-          <h1 className="mt-7 max-w-4xl font-display text-4xl font-extrabold leading-[1.04] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            One investment.{" "}
-            <span className="text-white/50">Years of</span> Google Maps visibility.
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg">
-            SeoFX is Sri Lanka's local search consultancy. We rebuild your Google Business Profile,
-            install the ranking signals that win the Local 3-Pack, and hand you a system that keeps
-            generating customers — without a monthly retainer.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <Button asChild variant="hero" size="lg">
-              <Link to="/contact-us">Book a Discovery Call</Link>
-            </Button>
-            <a
-              href="#investment"
-              className="text-sm font-medium text-white/60 underline-offset-4 hover:text-accent hover:underline"
-            >
-              See the one-time investment ↓
-            </a>
+        <div className="container-tight relative grid items-center gap-14 lg:grid-cols-[1.15fr_1fr]">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/70 backdrop-blur-sm">
+              <span className="size-1.5 rounded-full bg-google-red" />
+              Google Map Optimization · Sri Lanka
+            </span>
+            <h1 className="mt-7 max-w-2xl font-display text-4xl font-extrabold leading-[1.04] tracking-tight text-white sm:text-5xl md:text-6xl">
+              One investment.{" "}
+              <span className="text-white/50">Years of</span>{" "}
+              <span className="bg-gradient-to-r from-google-blue via-google-red to-google-yellow bg-clip-text text-transparent">
+                Google Maps
+              </span>{" "}
+              visibility.
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/65 sm:text-lg">
+              SeoFX is Sri Lanka's local search consultancy. We rebuild your Google Business Profile,
+              install the ranking signals that win the Local 3-Pack, and hand you a system that keeps
+              generating customers — without a monthly retainer.
+            </p>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <Button asChild variant="hero" size="lg">
+                <Link to="/contact-us">Book a Discovery Call</Link>
+              </Button>
+              <a
+                href="#investment"
+                className="text-sm font-medium text-white/60 underline-offset-4 hover:text-accent hover:underline"
+              >
+                See the one-time investment ↓
+              </a>
+            </div>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 sm:grid-cols-4">
-            {[
-              { num: "80%", label: "Of local clicks go to the top 3 Maps results" },
-              { num: "76%", label: "Of local mobile searches lead to a visit in 24h" },
-              { num: "85%", label: "Of Sri Lankans discover businesses via Google" },
-              { num: "1×", label: "Built once. Compounds for years." },
-            ].map((s) => (
-              <div key={s.label} className="border-l border-white/10 pl-5 first:border-l-0 first:pl-0 sm:pl-6">
-                <div className="font-display text-3xl font-extrabold text-white sm:text-4xl">{s.num}</div>
-                <div className="mt-1.5 text-xs leading-relaxed text-white/40 sm:text-sm">{s.label}</div>
+          {/* Mock Google Maps 3-Pack card */}
+          <div className="relative">
+            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-google-blue/30 via-transparent to-google-red/20 blur-2xl" aria-hidden />
+            <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-white shadow-2xl">
+              <div className="flex items-center gap-2 border-b border-border px-4 py-3">
+                <span className="size-2.5 rounded-full bg-google-red" />
+                <span className="size-2.5 rounded-full bg-google-yellow" />
+                <span className="size-2.5 rounded-full bg-google-green" />
+                <div className="ml-3 flex-1 truncate rounded-full border border-border bg-soft px-3 py-1 text-[11px] text-muted-foreground">
+                  <span className="font-medium text-foreground">google.com/maps</span>
+                  <span className="ml-1">— "best dentist in Colombo"</span>
+                </div>
               </div>
-            ))}
+              <div className="bg-soft p-3">
+                <p className="px-1.5 pb-2 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                  Local 3-Pack · Colombo
+                </p>
+                {[
+                  { rank: "1", name: "Your Business · SeoFX optimised", rating: "4.9", reviews: "248", live: true },
+                  { rank: "2", name: "Competitor A", rating: "4.6", reviews: "112", live: false },
+                  { rank: "3", name: "Competitor B", rating: "4.4", reviews: "87", live: false },
+                ].map((b) => (
+                  <div
+                    key={b.rank}
+                    className={
+                      "flex items-start gap-3 rounded-lg border-b border-border/60 bg-white p-3 last:border-b-0 " +
+                      (b.live ? "ring-2 ring-google-blue/40" : "")
+                    }
+                  >
+                    <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-google-red text-xs font-bold text-white">
+                      <MapPin className="size-4" aria-hidden />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <p className="truncate text-sm font-semibold text-foreground">{b.name}</p>
+                        {b.live && (
+                          <span className="shrink-0 rounded-full bg-google-green/15 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-google-green">
+                            #1
+                          </span>
+                        )}
+                      </div>
+                      <div className="mt-1 flex items-center gap-1 text-[11px] text-muted-foreground">
+                        <span className="font-semibold text-foreground">{b.rating}</span>
+                        <Star className="size-3 fill-google-yellow text-google-yellow" aria-hidden />
+                        <span>({b.reviews})</span>
+                        <span className="mx-1.5 text-border">·</span>
+                        <span>Dental clinic · Open now</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+        </div>
+
+        <div className="container-tight relative mt-16 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 sm:grid-cols-4">
+          {[
+            { num: "80%", label: "Of local clicks go to the top 3 Maps results" },
+            { num: "76%", label: "Of local mobile searches lead to a visit in 24h" },
+            { num: "85%", label: "Of Sri Lankans discover businesses via Google" },
+            { num: "1×", label: "Built once. Compounds for years." },
+          ].map((s) => (
+            <div key={s.label} className="border-l border-white/10 pl-5 first:border-l-0 first:pl-0 sm:pl-6">
+              <div className="font-display text-3xl font-extrabold text-white sm:text-4xl">{s.num}</div>
+              <div className="mt-1.5 text-xs leading-relaxed text-white/40 sm:text-sm">{s.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
