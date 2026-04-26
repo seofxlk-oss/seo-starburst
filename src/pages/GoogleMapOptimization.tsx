@@ -206,7 +206,7 @@ const INDUSTRY_SEARCHES = [
   },
 ];
 
-
+const PROCESS = [
   {
     n: "01",
     title: "Google Business Profile Optimization",
