@@ -66,17 +66,31 @@ const extractObjectArray = (source, constName) => {
   throw new Error(`Could not parse array for ${constName}`);
 };
 
-const normalizeTemplateLiterals = (source) =>
-  source
-    .replace(/`([^`\\]*(?:\\.[^`\\]*)*)`/g, (_match, inner) => JSON.stringify(inner.replace(/\$\{SITE\.url\}/g, SITE_URL)))
-    .replace(/(\s*)([A-Za-z0-9_]+)\s*:/g, '$1"$2":')
-    .replace(/,\s*([}\]])/g, "$1");
-
-const parseArrayLiteral = (source, constName) => JSON.parse(normalizeTemplateLiterals(extractObjectArray(source, constName)));
+const extractSlugBlocks = (source) => {
+  const blocks = [];
+  const regex = /\{[\s\S]*?slug:\s*"([^"]+)"[\s\S]*?\}/g;
+  let match;
+  while ((match = regex.exec(source))) {
+    blocks.push({ slug: match[1], block: match[0] });
+  }
+  return blocks;
+};
 
 const blogPosts = parseArrayLiteral(siteModule, "BLOG_POSTS");
-const services = parseArrayLiteral(servicesModule, "SERVICES");
-const industries = parseArrayLiteral(industriesModule, "INDUSTRIES");
+const services = extractSlugBlocks(servicesModule).map(({ slug, block }) => ({
+  slug,
+  seoTitle: block.match(/seoTitle:\s*"([\s\S]*?)"/)?.[1],
+  seoDescription: block.match(/seoDescription:\s*"([\s\S]*?)"/)?.[1],
+  keywords: block.match(/keywords:\s*"([\s\S]*?)"/)?.[1],
+})).filter((item) => item.slug && item.seoTitle && item.seoDescription);
+
+const industries = extractSlugBlocks(industriesModule).map(({ slug, block }) => ({
+  slug,
+  navLabel: block.match(/navLabel:\s*"([\s\S]*?)"/)?.[1],
+  seoTitle: block.match(/seoTitle:\s*"([\s\S]*?)"/)?.[1],
+  seoDescription: block.match(/seoDescription:\s*"([\s\S]*?)"/)?.[1],
+  keywords: block.match(/keywords:\s*"([\s\S]*?)"/)?.[1],
+})).filter((item) => item.slug && item.seoTitle && item.seoDescription);
 
 const pageMeta = new Map([
   ["/", {
@@ -253,17 +267,10 @@ const buildMetaBlock = (meta) => {
   ].filter(Boolean).join("\n    ");
 };
 
-const replaceHeadMeta = (html, meta) => {
-  const newMeta = buildMetaBlock(meta);
-  return html
-    .replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(meta.title)}</title>`)
-    .replace(/<meta name="description" content="[\s\S]*?" \/>/, `<meta name="description" content="${escapeHtml(meta.description)}" />`)
-    .replace(/<link rel="canonical" href="[\s\S]*?" \/>/, `<link rel="canonical" href="${escapeHtml(meta.canonical.startsWith("http") ? meta.canonical : `${SITE_URL}${meta.canonical}`)}" />`)
-    .replace(/<meta name="keywords" content="[\s\S]*?" \/>/, meta.keywords ? `<meta name="keywords" content="${escapeHtml(meta.keywords)}" />` : "")
-    .replace(/<meta name="robots" content="[\s\S]*?" \/>/, `<meta name="robots" content="${escapeHtml(meta.noindex ? "noindex,nofollow" : "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1")}" />`)
-    .replace(/<meta name="googlebot" content="[\s\S]*?" \/>/, `<meta name="googlebot" content="${escapeHtml(meta.noindex ? "noindex,nofollow" : "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1")}" />`)
-    .replace(/<meta property="og:title" content="[\s\S]*?" \/>[\s\S]*?<meta name="twitter:description" content="[\s\S]*?" \/>/, newMeta);
-};
+const replaceHeadMeta = (html, meta) => html.replace(
+  /<!-- ROUTE_META_START -->[\s\S]*?<!-- ROUTE_META_END -->/,
+  `<!-- ROUTE_META_START -->\n    ${buildMetaBlock(meta)}\n    <!-- ROUTE_META_END -->`,
+);
 
 for (const [routePath, meta] of pageMeta.entries()) {
   const finalHtml = replaceHeadMeta(baseHtml, meta);
