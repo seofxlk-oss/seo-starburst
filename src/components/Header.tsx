@@ -4,6 +4,7 @@ import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NAV_LINKS, SITE } from "@/lib/site";
 import { SERVICES } from "@/lib/services";
+import { INDUSTRIES } from "@/lib/industries";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
 
@@ -12,8 +13,11 @@ export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [industriesOpen, setIndustriesOpen] = useState(false);
+  const [mobileIndustriesOpen, setMobileIndustriesOpen] = useState(false);
   const { pathname } = useLocation();
   const closeTimer = useRef<number | null>(null);
+  const closeIndustriesTimer = useRef<number | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -26,6 +30,8 @@ export const Header = () => {
     setOpen(false);
     setServicesOpen(false);
     setMobileServicesOpen(false);
+    setIndustriesOpen(false);
+    setMobileIndustriesOpen(false);
   }, [pathname]);
 
   const openServices = () => {
@@ -35,6 +41,15 @@ export const Header = () => {
   const scheduleCloseServices = () => {
     if (closeTimer.current) window.clearTimeout(closeTimer.current);
     closeTimer.current = window.setTimeout(() => setServicesOpen(false), 120);
+  };
+
+  const openIndustries = () => {
+    if (closeIndustriesTimer.current) window.clearTimeout(closeIndustriesTimer.current);
+    setIndustriesOpen(true);
+  };
+  const scheduleCloseIndustries = () => {
+    if (closeIndustriesTimer.current) window.clearTimeout(closeIndustriesTimer.current);
+    closeIndustriesTimer.current = window.setTimeout(() => setIndustriesOpen(false), 120);
   };
 
   return (
