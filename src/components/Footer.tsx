@@ -36,6 +36,7 @@ export const Footer = () => {
                   <Link to={l.href} className="hover:text-accent">{l.label}</Link>
                 </li>
               ))}
+              <li><Link to="/seo-sri-lanka" className="hover:text-accent">SEO Sri Lanka</Link></li>
               {FOOTER_LINKS.map((l) => (
                 <li key={l.href}>
                   <Link to={l.href} className="hover:text-accent">{l.label}</Link>
