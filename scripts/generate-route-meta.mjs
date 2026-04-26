@@ -26,7 +26,6 @@ const escapeHtml = (value = "") =>
 
 const readModuleText = (relativePath) => fs.readFileSync(path.join(rootDir, relativePath), "utf8");
 
-const siteModule = readModuleText("src/lib/site.ts");
 const servicesModule = readModuleText("src/lib/services.ts");
 const industriesModule = readModuleText("src/lib/industries.ts");
 
@@ -66,38 +65,72 @@ const extractObjectArray = (source, constName) => {
   throw new Error(`Could not parse array for ${constName}`);
 };
 
-const extractSlugBlocks = (source) => {
+const extractTopLevelObjects = (source, constName) => {
+  const arrayText = extractObjectArray(source, constName);
   const blocks = [];
-  const regex = /\{[\s\S]*?slug:\s*"([^"]+)"[\s\S]*?\}/g;
-  let match;
-  while ((match = regex.exec(source))) {
-    blocks.push({ slug: match[1], block: match[0] });
+  let braceDepth = 0;
+  let startIndex = -1;
+  let inString = false;
+  let stringChar = "";
+  let prev = "";
+
+  for (let i = 0; i < arrayText.length; i += 1) {
+    const ch = arrayText[i];
+
+    if (inString) {
+      if (ch === stringChar && prev !== "\\") {
+        inString = false;
+      }
+    } else if (ch === '"' || ch === "'" || ch === "`") {
+      inString = true;
+      stringChar = ch;
+    } else if (ch === "{") {
+      if (braceDepth === 0) startIndex = i;
+      braceDepth += 1;
+    } else if (ch === "}") {
+      braceDepth -= 1;
+      if (braceDepth === 0 && startIndex !== -1) {
+        blocks.push(arrayText.slice(startIndex, i + 1));
+        startIndex = -1;
+      }
+    }
+
+    prev = ch;
   }
+
   return blocks;
 };
 
-const normalizeTemplateLiterals = (source) =>
-  source
-    .replace(/`([^`\\]*(?:\\.[^`\\]*)*)`/g, (_match, inner) => JSON.stringify(inner.replace(/\$\{SITE\.url\}/g, SITE_URL)))
-    .replace(/(\s*)([A-Za-z0-9_]+)\s*:/g, '$1"$2":')
-    .replace(/,\s*([}\]])/g, "$1");
+const extractStringField = (block, fieldName) => {
+  const patterns = [
+    new RegExp(`${fieldName}:\\s*"((?:\\\\.|[^"\\])*)"`),
+    new RegExp(`${fieldName}:\\s*'((?:\\\\.|[^'\\])*)'`),
+    new RegExp(`${fieldName}:\\s*` + "`([\\s\\S]*?)`"),
+  ];
 
-const parseArrayLiteral = (source, constName) => JSON.parse(normalizeTemplateLiterals(extractObjectArray(source, constName)));
+  for (const pattern of patterns) {
+    const value = block.match(pattern)?.[1];
+    if (value) {
+      return value.replace(/\\"/g, '"').replace(/\\'/g, "'").replace(/\$\{SITE\.url\}/g, SITE_URL);
+    }
+  }
 
-const blogPosts = parseArrayLiteral(siteModule, "BLOG_POSTS");
-const services = extractSlugBlocks(servicesModule).map(({ slug, block }) => ({
-  slug,
-  seoTitle: block.match(/seoTitle:\s*"([\s\S]*?)"/)?.[1],
-  seoDescription: block.match(/seoDescription:\s*"([\s\S]*?)"/)?.[1],
-  keywords: block.match(/keywords:\s*"([\s\S]*?)"/)?.[1],
+  return undefined;
+};
+
+const services = extractTopLevelObjects(servicesModule, "SERVICES").map((block) => ({
+  slug: extractStringField(block, "slug"),
+  seoTitle: extractStringField(block, "seoTitle"),
+  seoDescription: extractStringField(block, "seoDescription"),
+  keywords: extractStringField(block, "keywords"),
 })).filter((item) => item.slug && item.seoTitle && item.seoDescription);
 
-const industries = extractSlugBlocks(industriesModule).map(({ slug, block }) => ({
-  slug,
-  navLabel: block.match(/navLabel:\s*"([\s\S]*?)"/)?.[1],
-  seoTitle: block.match(/seoTitle:\s*"([\s\S]*?)"/)?.[1],
-  seoDescription: block.match(/seoDescription:\s*"([\s\S]*?)"/)?.[1],
-  keywords: block.match(/keywords:\s*"([\s\S]*?)"/)?.[1],
+const industries = extractTopLevelObjects(industriesModule, "INDUSTRIES").map((block) => ({
+  slug: extractStringField(block, "slug"),
+  navLabel: extractStringField(block, "navLabel"),
+  seoTitle: extractStringField(block, "seoTitle"),
+  seoDescription: extractStringField(block, "seoDescription"),
+  keywords: extractStringField(block, "keywords"),
 })).filter((item) => item.slug && item.seoTitle && item.seoDescription);
 
 const pageMeta = new Map([
