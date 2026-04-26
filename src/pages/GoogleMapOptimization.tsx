@@ -143,7 +143,7 @@ const INCLUDED = [
   "Category, attribute and service architecture",
   "Geo-tagged photo strategy and professional upload",
   "Google Maps ranking signal implementation",
-  "NAP consistency audit across 30+ Sri Lankan directories",
+  
   "Review acquisition system design and installation",
   "Competitor gap analysis and positioning report",
   "60-minute handover advisory session",
