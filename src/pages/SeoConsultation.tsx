@@ -461,6 +461,92 @@ const SeoConsultation = () => {
         </div>
       </section>
 
+      {/* PERMANENT MISTAKES — cannot be fixed after launch */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-red-50 via-background to-background py-16 sm:py-20 dark:from-red-950/20">
+        <div className="container-tight">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-red-700 dark:text-red-300">
+              <Lock className="size-3.5" /> Permanent Damage Warning
+            </span>
+            <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-foreground sm:text-4xl md:text-5xl">
+              Some SEO Mistakes <span className="text-red-600">Cannot Be Fixed</span> After Your Site Goes Live
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              This is the part nobody in web development tells you. Certain decisions made at build
+              time become <strong className="font-semibold text-foreground">permanent</strong> — or so
+              costly to reverse that most businesses simply live with the damage forever. This is
+              exactly why an SEO consultant must be involved <em>before</em> a single page is built.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {[
+              {
+                title: "Domain & Brand Name Choice",
+                body: "Once your business has built brand equity around a domain, changing it means starting SEO from zero. A poor domain choice — too long, hard to spell, wrong keyword targeting — will hold you back forever, but rebranding is rarely an option.",
+                tag: "Permanent",
+              },
+              {
+                title: "Site Platform & CMS",
+                body: "Built on a platform that can't handle proper SEO — limited URL control, no schema support, slow rendering? Migrating platforms after launch means rebuilding the entire site, losing rankings, and breaking thousands of inbound links overnight.",
+                tag: "Near-permanent",
+              },
+              {
+                title: "Information Architecture",
+                body: "The hierarchy of how your pages relate to each other tells Google what's important. Get this wrong, and every link you ever earn flows to the wrong pages. Restructuring later means breaking the entire URL system Google has indexed.",
+                tag: "Extremely costly to reverse",
+              },
+              {
+                title: "Indexed Thin or Duplicate Content",
+                body: "Once Google sees your site as low-quality — too many thin pages, duplicate product descriptions, scraped content — that reputation sticks. Even after fixing it, recovery takes 12–24 months, and some sites never fully recover their domain trust.",
+                tag: "Reputation damage lasts years",
+              },
+              {
+                title: "Wrong Country / Language Targeting",
+                body: "Setting your site to target the wrong country in Google Search Console, or launching in the wrong language for your buyers, means Google sends you irrelevant traffic for years. Hreflang errors at launch cause indexing chaos that's painful to untangle.",
+                tag: "Years of lost relevance",
+              },
+              {
+                title: "Manual Penalties from Bad Links",
+                body: "If your developer or marketing agency built spammy backlinks early on, Google may issue a manual penalty. Disavowing toxic links and recovering from a penalty can take 6–18 months — and some sites never regain the trust they had before.",
+                tag: "Trust may never return",
+              },
+            ].map((m) => (
+              <article
+                key={m.title}
+                className="group relative rounded-2xl border border-red-200/60 bg-card p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-google dark:border-red-900/40"
+              >
+                <div className="inline-flex size-11 items-center justify-center rounded-xl bg-red-500/10 text-red-600">
+                  <Lock className="size-5" />
+                </div>
+                <h3 className="mt-4 font-display text-base font-bold text-foreground">{m.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{m.body}</p>
+                <span className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-red-500/30 bg-red-500/10 px-2.5 py-1 text-[11px] font-semibold text-red-700 dark:text-red-300">
+                  <AlertTriangle className="size-3" /> {m.tag}
+                </span>
+              </article>
+            ))}
+          </div>
+
+          <div className="mx-auto mt-12 max-w-3xl rounded-2xl border-l-4 border-red-500 bg-card p-6 shadow-card sm:p-8">
+            <p className="font-display text-lg font-semibold leading-relaxed text-foreground sm:text-xl">
+              "By the time most businesses realise these mistakes exist, the website is already
+              live, indexed, and earning a reputation with Google. Fixing them isn't a tweak — it's
+              a rebuild. And rebuilds cost everything you've invested so far, plus everything you'll
+              spend doing it again."
+            </p>
+            <p className="mt-3 text-sm font-semibold text-muted-foreground">
+              — This is why an SEO consultation must happen <em>before</em> the build, not after.
+            </p>
+            <Button asChild size="lg" className="mt-6 bg-accent text-accent-foreground hover:bg-accent/90">
+              <a href="#package">
+                Book Consultation Before You Build <ArrowRight className="size-4" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* PACKAGE */}
       <section
         id="package"
