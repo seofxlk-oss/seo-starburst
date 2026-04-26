@@ -227,16 +227,6 @@ const pageMeta = new Map([
   }],
 ]);
 
-for (const post of blogPosts) {
-  pageMeta.set(`/blog/${post.slug}`, {
-    title: post.title,
-    description: post.excerpt,
-    canonical: `/blog/${post.slug}`,
-    keywords: undefined,
-    ogType: "article",
-  });
-}
-
 const postFiles = fs.readdirSync(path.join(rootDir, "src/pages/blog")).filter((file) => /^Post\d+\.tsx$/.test(file));
 for (const file of postFiles) {
   const fileText = readModuleText(`src/pages/blog/${file}`);
