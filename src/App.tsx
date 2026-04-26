@@ -49,6 +49,7 @@ import Post32 from "./pages/blog/Post32";
 import IndustriesHub from "./pages/IndustriesHub";
 import IndustryPage from "./pages/IndustryPage";
 import SeoConsultation from "./pages/SeoConsultation";
+import GoogleMapOptimization from "./pages/GoogleMapOptimization";
 import { INDUSTRIES } from "@/lib/industries";
 import NotFound from "./pages/NotFound";
 
@@ -106,6 +107,7 @@ const App = () => (
             <Route path="/blog/monthly-seo-services-vs-one-time-audit-sri-lanka" element={<Post32 />} />
             <Route path="/seo-consultant-sri-lanka" element={<SeoConsultation />} />
             <Route path="/seo-consultation" element={<Navigate to="/seo-consultant-sri-lanka" replace />} />
+            <Route path="/google-map-optimization" element={<GoogleMapOptimization />} />
             <Route path="/industries" element={<IndustriesHub />} />
             {INDUSTRIES.map((ind) => (
               <Route

@@ -54,6 +54,7 @@ export const Footer = () => {
               <li><Link to="/services" className="hover:text-accent">On-Site SEO</Link></li>
               <li><Link to="/services" className="hover:text-accent">Off-Site SEO</Link></li>
               <li><Link to="/services" className="hover:text-accent">Link Building</Link></li>
+              <li><Link to="/google-map-optimization" className="hover:text-accent">Google Map Optimization</Link></li>
               <li><Link to="/seo-packages-sri-lanka" className="hover:text-accent">SEO Packages</Link></li>
             </ul>
           </div>
