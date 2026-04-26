@@ -3,6 +3,7 @@ import {
   ArrowRight, Search, TrendingUp, Users, Target, BarChart3, MessageCircle,
   CheckCircle2, Award, ShieldCheck, Sparkles, Phone, Globe, Zap, LineChart,
   Briefcase, Megaphone, Code2, Handshake, Star, Quote, Trophy, Calendar,
+  Rocket, Crown, MapPin,
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Layout } from "@/components/Layout";
