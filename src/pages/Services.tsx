@@ -25,6 +25,14 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { CTASection } from "@/components/CTASection";
 import { AIAnswerBlock } from "@/components/AIAnswerBlock";
 import { SERVICES } from "@/lib/services";
+import { SITE } from "@/lib/site";
+import {
+  orgSchema,
+  websiteSchema,
+  localBusinessSchema,
+  faqSchema,
+  serviceSchema,
+} from "@/lib/schema";
 
 const WHY_CHOOSE = [
   {
@@ -147,26 +155,23 @@ const Services = () => {
         description="SEO services Sri Lanka by SeoFX — full SEO service in Sri Lanka covering audit, keyword research, on-page, link building & local SEO. Free SEO audit."
         canonical="/services"
         keywords="seo services sri lanka, seo service sri lanka, seo companies sri lanka, seo company sri lanka, best seo company sri lanka, seo sri lanka"
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          serviceType: "Search Engine Optimization",
-          provider: { "@id": "https://seofx.lk/#organization" },
-          areaServed: { "@type": "Country", name: "Sri Lanka" },
-          name: "SEO Services in Sri Lanka",
-          hasOfferCatalog: {
-            "@type": "OfferCatalog",
-            name: "SEO Services",
-            itemListElement: SERVICES.map((s) => ({
-              "@type": "Offer",
-              itemOffered: {
-                "@type": "Service",
-                name: s.title,
-                url: `https://seofx.lk/services/${s.slug}`,
-              },
+        jsonLd={[
+          orgSchema(),
+          websiteSchema(),
+          localBusinessSchema(),
+          serviceSchema({
+            name: "SEO Services in Sri Lanka",
+            description:
+              "End-to-end SEO services in Sri Lanka — SEO consulting, technical audits, keyword research, on-page SEO, link building, local SEO and content SEO from SeoFX.",
+            url: `${SITE.url}/services`,
+            offers: SERVICES.map((s) => ({
+              name: s.title,
+              url: `${SITE.url}/services/${s.slug}`,
+              description: s.cardIntro,
             })),
-          },
-        }}
+          }),
+          faqSchema(SERVICES_AI_ANSWERS),
+        ]}
       />
       <Breadcrumbs items={[{ label: "Services" }]} />
 
