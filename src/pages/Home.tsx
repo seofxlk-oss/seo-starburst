@@ -192,7 +192,7 @@ const Home = () => {
     features: [
       "Google Business Profile setup & optimisation",
       "Local keyword & geo targeting",
-      "Citations & NAP consistency across 30+ Sri Lankan directories",
+      "Citations & NAP consistency",
       "Review generation strategy",
       "Monthly local ranking report",
     ],
