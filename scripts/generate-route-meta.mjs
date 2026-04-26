@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
+import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,6 +16,9 @@ if (!fs.existsSync(indexHtmlPath)) {
   throw new Error("dist/index.html not found. Run the Vite build before generating route meta.");
 }
 
+const { SERVICES } = await import(path.join(rootDir, "src/lib/services.ts"));
+const { INDUSTRIES } = await import(path.join(rootDir, "src/lib/industries.ts"));
+
 const escapeHtml = (value = "") =>
   String(value)
     .replace(/&/g, "&amp;")
@@ -23,55 +26,6 @@ const escapeHtml = (value = "") =>
     .replace(/>/g, "&gt;")
     .replace(/\"/g, "&quot;")
     .replace(/'/g, "&#39;");
-
-const loadDataFromBuiltChunk = async () => {
-  const assetsDir = path.join(distDir, "assets");
-  const jsFile = fs.readdirSync(assetsDir).find((file) => /^index-.*\.js$/.test(file));
-  if (!jsFile) throw new Error("Built JS bundle not found in dist/assets.");
-
-  const bundlePath = path.join(assetsDir, jsFile);
-  const bundleText = fs.readFileSync(bundlePath, "utf8");
-
-  const marker = "const Xd=";
-  const start = bundleText.indexOf(marker);
-  if (start === -1) throw new Error("Could not locate compiled service data in bundle.");
-
-  const slice = bundleText.slice(start);
-  const siteMatch = slice.match(/const Xd=(\[[\s\S]*?\]),pl=\{[\s\S]*?const no=(\[[\s\S]*?\]),ao=\{[\s\S]*?const Gd=(\[[\s\S]*?\]);/);
-  if (!siteMatch) throw new Error("Could not parse compiled route data from bundle.");
-
-  const evaluate = (code) => Function(`return (${code});`)();
-
-  return {
-    services: evaluate(siteMatch[1]),
-    blogPosts: evaluate(siteMatch[2]),
-    industries: evaluate(siteMatch[3]),
-  };
-};
-
-const loadBlogPageMeta = async () => {
-  const blogDir = path.join(rootDir, "src/pages/blog");
-  const blogFiles = fs.readdirSync(blogDir).filter((file) => /^Post\d+\.tsx$/.test(file));
-  const results = [];
-
-  for (const file of blogFiles) {
-    const fileUrl = pathToFileURL(path.join(blogDir, file)).href;
-    const text = fs.readFileSync(path.join(blogDir, file), "utf8");
-    const slug = text.match(/slug="([^"]+)"/)?.[1];
-    const metaTitle = text.match(/metaTitle="([\s\S]*?)"/)?.[1];
-    const metaDesc = text.match(/metaDesc="([\s\S]*?)"/)?.[1];
-    const keywords = text.match(/keywords="([\s\S]*?)"/)?.[1];
-
-    if (slug && metaTitle && metaDesc) {
-      results.push({ slug, metaTitle, metaDesc, keywords, fileUrl });
-    }
-  }
-
-  return results;
-};
-
-const { services, industries } = await loadDataFromBuiltChunk();
-const blogPages = await loadBlogPageMeta();
 
 const pageMeta = new Map([
   ["/", {
@@ -157,17 +111,7 @@ const pageMeta = new Map([
   }],
 ]);
 
-for (const post of blogPages) {
-  pageMeta.set(`/blog/${post.slug}`, {
-    title: post.metaTitle,
-    description: post.metaDesc,
-    canonical: `/blog/${post.slug}`,
-    keywords: post.keywords,
-    ogType: "article",
-  });
-}
-
-for (const service of services) {
+for (const service of SERVICES) {
   pageMeta.set(`/services/${service.slug}`, {
     title: service.seoTitle,
     description: service.seoDescription,
@@ -176,7 +120,7 @@ for (const service of services) {
   });
 }
 
-for (const industry of industries) {
+for (const industry of INDUSTRIES) {
   pageMeta.set(`/${industry.slug}`, {
     title: industry.seoTitle,
     description: industry.seoDescription,
@@ -186,13 +130,29 @@ for (const industry of industries) {
   });
 }
 
+const blogDir = path.join(rootDir, "src/pages/blog");
+for (const file of fs.readdirSync(blogDir).filter((name) => /^Post\d+\.tsx$/.test(name))) {
+  const text = fs.readFileSync(path.join(blogDir, file), "utf8");
+  const slug = text.match(/slug="([^"]+)"/)?.[1];
+  const metaTitle = text.match(/metaTitle="([\s\S]*?)"/)?.[1];
+  const metaDesc = text.match(/metaDesc="([\s\S]*?)"/)?.[1];
+  const keywords = text.match(/keywords="([\s\S]*?)"/)?.[1];
+  if (slug && metaTitle && metaDesc) {
+    pageMeta.set(`/blog/${slug}`, {
+      title: metaTitle,
+      description: metaDesc,
+      canonical: `/blog/${slug}`,
+      keywords,
+      ogType: "article",
+    });
+  }
+}
+
 const baseHtml = fs.readFileSync(indexHtmlPath, "utf8");
 
 const buildMetaBlock = (meta) => {
   const canonicalUrl = meta.canonical?.startsWith("http") ? meta.canonical : `${SITE_URL}${meta.canonical || "/"}`;
-  const robots = meta.noindex
-    ? "noindex,nofollow"
-    : "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1";
+  const robots = meta.noindex ? "noindex,nofollow" : "index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1";
   const ogType = meta.ogType || "website";
   const ogImage = meta.ogImage || DEFAULT_OG_IMAGE;
   const ogImageAlt = meta.ogImageAlt || "SeoFX — Best SEO Company in Sri Lanka";
