@@ -244,6 +244,42 @@ const IndustryPage = () => {
         </div>
       </section>
 
+      {/* ═══ INTERNAL LINK: SEO Sri Lanka anchor → Home ═══ */}
+      <section className="container-tight pb-12">
+        <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card p-6 text-center shadow-sm sm:p-8">
+          <h2 className="font-display text-xl font-extrabold sm:text-2xl">
+            Looking for full-service{" "}
+            <Link to="/" className="text-accent underline-offset-4 hover:underline">
+              SEO Sri Lanka
+            </Link>{" "}
+            beyond {industry.navLabel.toLowerCase()}?
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            SeoFX is a leading{" "}
+            <Link to="/" className="text-accent underline-offset-4 hover:underline">
+              SEO Sri Lanka
+            </Link>{" "}
+            agency helping {industry.navLabel.toLowerCase()} businesses and brands across every
+            sector rank on Google. Explore our complete{" "}
+            <Link to="/services" className="text-accent underline-offset-4 hover:underline">
+              SEO services
+            </Link>{" "}
+            and{" "}
+            <Link to="/seo-packages-sri-lanka" className="text-accent underline-offset-4 hover:underline">
+              SEO packages
+            </Link>{" "}
+            built for Sri Lankan businesses.
+          </p>
+          <div className="mt-5">
+            <Button asChild variant="outline" size="sm">
+              <Link to="/">
+                Visit SEO Sri Lanka home <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       <CTASection
         title="Need a custom industry SEO strategy?"
         subtitle="Talk to a Sri Lankan SEO specialist who knows your industry — free, no obligation."
