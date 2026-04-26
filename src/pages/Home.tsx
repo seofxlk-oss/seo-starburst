@@ -12,6 +12,13 @@ import { AIAnswerBlock } from "@/components/AIAnswerBlock";
 import { ConsultationSection } from "@/components/ConsultationSection";
 import { GoogleSearchHero } from "@/components/GoogleSearchHero";
 import { SITE } from "@/lib/site";
+import {
+  orgSchema,
+  websiteSchema,
+  localBusinessSchema,
+  faqSchema,
+  serviceSchema,
+} from "@/lib/schema";
 import caseImg from "@/assets/case-porkendeli.jpg";
 
 const Home = () => {
@@ -43,85 +50,22 @@ const Home = () => {
   ];
 
   const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://seofx.lk/#organization",
-      name: "SeoFX",
-      alternateName: ["SeoFX Sri Lanka", "Best SEO Company Sri Lanka"],
-      url: "https://seofx.lk/",
-      logo: "https://seofx.lk/logo.png",
-      image: "https://seofx.lk/og-image.jpg",
+    orgSchema(),
+    websiteSchema(),
+    localBusinessSchema(),
+    serviceSchema({
+      name: "SEO Services in Sri Lanka",
       description:
-        "SeoFX is the best SEO company in Sri Lanka offering professional SEO services, SEO packages and white-hat SEO for Sri Lankan businesses, agencies and web developers.",
-      email: SITE.email,
-      telephone: SITE.phoneRaw,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Rajagiriya",
-        addressLocality: "Colombo",
-        addressRegion: "Western Province",
-        addressCountry: "LK",
-      },
-      areaServed: { "@type": "Country", name: "Sri Lanka" },
-      contactPoint: {
-        "@type": "ContactPoint",
-        telephone: SITE.phoneRaw,
-        contactType: "customer service",
-        areaServed: "LK",
-        availableLanguage: ["en", "si"],
-      },
-      knowsAbout: [
-        "SEO Sri Lanka",
-        "SEO services Sri Lanka",
-        "SEO packages Sri Lanka",
-        "White-label SEO Sri Lanka",
-        "Local SEO",
-        "E-commerce SEO",
-        "Link building",
+        "Full-service SEO in Sri Lanka — audits, keyword research, on-page, link building, local SEO and white-label SEO for businesses, agencies and developers.",
+      url: `${SITE.url}/`,
+      offers: [
+        { name: "SEO Consultation", url: `${SITE.url}/seo-packages-sri-lanka#consultation`, price: "50000" },
+        { name: "Starter SEO Package", url: `${SITE.url}/seo-packages-sri-lanka#starter`, price: "29900" },
+        { name: "Business SEO Package", url: `${SITE.url}/seo-packages-sri-lanka#business`, price: "59900" },
+        { name: "Premium SEO Package", url: `${SITE.url}/seo-packages-sri-lanka#premium`, price: "99900" },
       ],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://seofx.lk/#localbusiness",
-      name: "SeoFX — SEO Company Sri Lanka",
-      url: "https://seofx.lk/",
-      image: "https://seofx.lk/og-image.jpg",
-      telephone: SITE.phoneRaw,
-      priceRange: "LKR 29,900 – LKR 150,000+",
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "Rajagiriya",
-        addressLocality: "Colombo",
-        addressRegion: "Western Province",
-        addressCountry: "LK",
-      },
-      areaServed: ["Colombo", "Kandy", "Galle", "Negombo", "Jaffna", "Matara", "Kurunegala", "Sri Lanka"],
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "87",
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://seofx.lk/#website",
-      url: "https://seofx.lk/",
-      name: "SeoFX — Best SEO Company in Sri Lanka",
-      publisher: { "@id": "https://seofx.lk/#organization" },
-      inLanguage: "en-LK",
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: faqs.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    },
+    }),
+    faqSchema(faqs),
   ];
 
   // ───────── Section 2 — Who We Serve ─────────
