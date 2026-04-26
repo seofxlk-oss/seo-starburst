@@ -273,7 +273,7 @@ const SeoConsultation = () => {
     url: "https://seofx.lk/seo-consultation",
   };
 
-  const faqJsonLd = faqSchema(FAQS.map((f) => ({ question: f.q, answer: f.a })));
+  const faqJsonLd = faqSchema(FAQS);
 
   return (
     <Layout>
@@ -282,7 +282,7 @@ const SeoConsultation = () => {
         description="Building a website without SEO is like building a house without an architect. SeoFX's Rs. 50,000 SEO consultation package saves businesses, web & marketing agencies from costly mistakes. Book now."
         canonical="/seo-consultation"
         keywords="SEO consultation Sri Lanka, SEO before website, SEO consultant Sri Lanka, website SEO planning, web development SEO Sri Lanka, digital marketing agency SEO"
-        jsonLd={[orgSchema, websiteSchema, serviceSchema, faqJsonLd]}
+        jsonLd={[orgSchema(), websiteSchema(), serviceSchema, faqJsonLd]}
       />
 
       <Breadcrumbs items={[{ label: "SEO Consultation" }]} />
