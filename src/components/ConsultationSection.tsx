@@ -115,7 +115,7 @@ export const ConsultationSection = ({
       price: priceLkr,
       priceCurrency: "LKR",
       availability: "https://schema.org/InStock",
-      url: "https://seofx.lk/contact-us",
+      url: "https://seofx.lk/seo-consultation-sri-lanka",
     },
   };
 
