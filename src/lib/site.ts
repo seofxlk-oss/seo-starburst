@@ -18,10 +18,10 @@ export const NAV_LINKS = [
   { label: "Industries", href: "/industries" },
   { label: "SEO Consultation", href: "/seo-consultation" },
   { label: "Pricing", href: "/seo-packages-sri-lanka" },
-  { label: "Case Studies", href: "/case-studies" },
 ];
 
 export const FOOTER_LINKS = [
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
 ];
