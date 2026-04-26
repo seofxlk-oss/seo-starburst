@@ -17,6 +17,8 @@ import {
   CheckCircle2,
   XCircle,
   Lock,
+  Star,
+  TrendingUp,
 } from "lucide-react";
 import { SEO } from "@/components/SEO";
 import { Layout } from "@/components/Layout";
