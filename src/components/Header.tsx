@@ -294,6 +294,45 @@ export const Header = () => {
                   </div>
                 );
               }
+              if (l.href === "/industries") {
+                return (
+                  <div key={l.href} className="border-b border-border/50 last:border-0">
+                    <button
+                      type="button"
+                      onClick={() => setMobileIndustriesOpen((v) => !v)}
+                      aria-expanded={mobileIndustriesOpen}
+                      className="flex w-full items-center justify-between py-3 text-base font-medium text-foreground/80 hover:text-accent"
+                    >
+                      <span>{l.label}</span>
+                      <ChevronDown
+                        className={cn("size-4 transition-transform", mobileIndustriesOpen && "rotate-180")}
+                      />
+                    </button>
+                    {mobileIndustriesOpen && (
+                      <ul className="mb-3 ml-1 space-y-1 border-l border-border pl-3">
+                        <li>
+                          <Link
+                            to="/industries"
+                            className="block py-2 text-sm font-semibold text-accent"
+                          >
+                            All Industries
+                          </Link>
+                        </li>
+                        {INDUSTRIES.map((ind) => (
+                          <li key={ind.slug}>
+                            <Link
+                              to={`/${ind.slug}`}
+                              className="block py-2 text-sm text-foreground/75 hover:text-accent"
+                            >
+                              {ind.navLabel}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                );
+              }
               return (
                 <Link
                   key={l.href}
