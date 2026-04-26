@@ -42,16 +42,9 @@ export const GoogleSearchHero = () => {
           </h2>
 
           <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-            SeoFX is a results-driven <strong className="font-semibold text-foreground">SEO company in Sri Lanka</strong> providing
-            professional <strong className="font-semibold text-foreground">SEO Sri Lanka</strong> solutions — transparent
-            packages, clear pricing and 100% white-hat SEO that helps businesses rank higher on Google,
-            increase traffic and generate more leads.
-          </p>
-
-          <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
-            As a trusted <strong className="font-semibold text-foreground">SEO specialist in Sri Lanka</strong>, we deliver
-            customised SEO Sri Lanka strategies designed to improve your online visibility, attract the right audience,
-            and grow your business sustainably.
+            A results-driven <strong className="font-semibold text-foreground">SEO company in Sri Lanka</strong>{" "}
+            delivering white-hat <strong className="font-semibold text-foreground">SEO Sri Lanka</strong> strategies
+            that rank you higher, drive traffic and generate leads.
           </p>
 
           {/* Google-style search bar */}
